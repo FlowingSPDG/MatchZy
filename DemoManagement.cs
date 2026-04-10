@@ -21,6 +21,7 @@ namespace MatchZy
 
         public bool isDemoRecording = false;
         public bool isDemoRecordingEnabled = true;
+        public bool isDemoUploadS3Enabled = false;
 
         public void StartDemoRecording()
         {
@@ -78,7 +79,7 @@ namespace MatchZy
                 {
                     Task.Run(async () =>
                     {
-                        await UploadFileAsync(demoPath, demoUploadURL, demoUploadHeaderKey, demoUploadHeaderValue, liveMatchId, currentMapNumber, roundNumber);
+                        await UploadFileAsync(demoPath, demoUploadURL, demoUploadHeaderKey, demoUploadHeaderValue, liveMatchId, currentMapNumber, roundNumber, isDemoUploadS3Enabled);
                     });
                 });
             });
